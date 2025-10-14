@@ -39,7 +39,9 @@ A comprehensive, visually stunning framework for experimenting with Multi-Layer 
 
 - **Advanced Visualizations**
   - 📊 Dataset sample visualization
-  - 📈 Training history curves (loss, accuracy, time)
+  - �️ **MNIST Dataset Overview** (NEW! - comprehensive dataset analysis)
+  - 🧠 **Network Topology Animation** (NEW! - animated neuron activation flow)
+  - �📈 Training history curves (loss, accuracy, time)
   - 🔲 Confusion matrices (normalized & raw)
   - 🎯 Prediction samples with confidence scores
   - 🌡️ Probability heatmaps
@@ -165,6 +167,42 @@ This performs:
 - Full visualization suite
 - Comparative analysis report
 
+### Option 4: New Topology & Dataset Demo 🆕
+
+To explore the new visualization features:
+
+```bash
+python scripts/topology_demo.py
+```
+
+**What's New:**
+
+1. **🧠 Network Topology Animation**
+   - Animated visualization of neural network structure
+   - Shows real-time neuron activation as data flows through layers
+   - Color-coded activation levels (red=high, green=low)
+   - Displays prediction confidence and process
+   - Creates GIF animations for multiple predictions
+
+2. **🖼️ MNIST Dataset Overview**
+   - Comprehensive dataset visualization
+   - Class distribution (bar & pie charts)
+   - Dataset statistics (mean, std, min, max)
+   - Sample images for all 10 digits
+   - Visual quality assessment
+
+**Demo Output:**
+- `mnist_dataset_overview.png` - Complete dataset analysis
+- `network_topology_animation_[1-5].gif` - 5 animated network predictions
+- See neurons "light up" as they process information!
+
+This demo is perfect for:
+- Understanding how neural networks work internally
+- Presenting the model architecture visually
+- Analyzing dataset characteristics
+- Educational demonstrations
+- Academic presentations
+
 ## 📚 Documentation
 
 ### Project Structure
@@ -182,7 +220,10 @@ T2_MLP-MNIST/
 │   └── ui.py                  # Interactive UI
 ├── scripts/
 │   ├── quick_start.py         # Quick demo
-│   └── advanced_experiment.py # Comprehensive experiments
+│   ├── advanced_experiment.py # Comprehensive experiments
+│   ├── batch_experiment.py    # All experiments runner
+│   ├── noise_demo.py          # Noise comparison demo
+│   └── topology_demo.py       # NEW! Network topology & dataset visualization demo
 ├── output/
 │   ├── images/                # Generated visualizations
 │   └── data/                  # Experiment results & reports

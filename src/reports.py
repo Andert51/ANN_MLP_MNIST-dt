@@ -114,7 +114,8 @@ class MathematicalReporter:
         report.append("5. DETAILED CLASSIFICATION METRICS (TEST SET)")
         report.append("-" * 80)
         class_report = classification_report(y_test, test_predictions, 
-                                            target_names=[f"Class {i}" for i in range(10)])
+                                            target_names=[f"Class {i}" for i in range(10)],
+                                            zero_division=0)
         report.append(class_report)
         report.append("")
         

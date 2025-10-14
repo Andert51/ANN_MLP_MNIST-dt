@@ -527,3 +527,312 @@ class MLPVisualizer:
         print(f"Saved interactive dashboard: {save_path}")
         
         return fig
+    
+    def plot_mnist_dataset_overview(self, X: np.ndarray, y: np.ndarray,
+                                     save_name: str = "mnist_dataset_overview.png"):
+        """
+        Comprehensive visualization of MNIST dataset
+        Shows samples per class and distribution
+        """
+        fig = plt.figure(figsize=(16, 10))
+        gs = fig.add_gridspec(4, 12, hspace=0.4, wspace=0.5)
+        
+        # Main title
+        fig.suptitle('MNIST Dataset Comprehensive Overview', 
+                    fontsize=20, fontweight='bold', y=0.98)
+        
+        # 1. Class distribution
+        ax_dist = fig.add_subplot(gs[0, :4])
+        unique, counts = np.unique(y, return_counts=True)
+        colors = plt.cm.tab10(np.linspace(0, 1, 10))
+        bars = ax_dist.bar(unique, counts, color=colors, edgecolor='black', linewidth=1.5)
+        ax_dist.set_xlabel('Digit Class', fontsize=12, fontweight='bold')
+        ax_dist.set_ylabel('Number of Samples', fontsize=12, fontweight='bold')
+        ax_dist.set_title('Class Distribution', fontsize=14, fontweight='bold')
+        ax_dist.grid(axis='y', alpha=0.3)
+        
+        # Add count labels on bars
+        for bar in bars:
+            height = bar.get_height()
+            ax_dist.text(bar.get_x() + bar.get_width()/2., height,
+                        f'{int(height)}',
+                        ha='center', va='bottom', fontweight='bold')
+        
+        # 2. Pie chart
+        ax_pie = fig.add_subplot(gs[0, 4:8])
+        ax_pie.pie(counts, labels=unique, autopct='%1.1f%%', colors=colors,
+                  startangle=90, textprops={'fontsize': 10, 'fontweight': 'bold'})
+        ax_pie.set_title('Class Proportion', fontsize=14, fontweight='bold')
+        
+        # 3. Dataset stats
+        ax_stats = fig.add_subplot(gs[0, 8:])
+        ax_stats.axis('off')
+        stats_text = f"""
+        Dataset Statistics
+        {'='*30}
+        Total Samples: {len(X):,}
+        Features: {X.shape[1]}
+        Classes: {len(unique)}
+        Image Size: 28×28 pixels
+        
+        Min Pixel: {X.min():.3f}
+        Max Pixel: {X.max():.3f}
+        Mean Pixel: {X.mean():.3f}
+        Std Pixel: {X.std():.3f}
+        """
+        ax_stats.text(0.1, 0.5, stats_text, fontsize=10, family='monospace',
+                     verticalalignment='center', bbox=dict(boxstyle='round',
+                     facecolor='wheat', alpha=0.5))
+        
+        # 4. Sample images for each class (rows 1-3)
+        samples_per_class = 4  # Show 4 samples per digit
+        for digit in range(10):
+            # Get indices for this digit
+            digit_indices = np.where(y == digit)[0]
+            
+            if len(digit_indices) == 0:
+                continue  # Skip if no samples for this digit
+                
+            # Randomly select samples
+            n_samples = min(samples_per_class, len(digit_indices))
+            selected = np.random.choice(digit_indices, n_samples, replace=False)
+            
+            for i, idx in enumerate(selected):
+                row = 1 + digit // 3  # Rows 1-3 (3 rows for 10 digits, ~3-4 digits per row)
+                col_offset = (digit % 3) * 4  # Each digit gets 4 columns
+                col = col_offset + i  # Position within those 4 columns
+                
+                # Safety check for grid bounds
+                if row < 4 and col < 12:
+                    ax = fig.add_subplot(gs[row, col])
+                    
+                    image = X[idx].reshape(28, 28)
+                    ax.imshow(image, cmap='gray', interpolation='nearest')
+                    ax.axis('off')
+                    
+                    if i == 0:
+                        ax.set_title(f'Digit {digit}', fontsize=11, 
+                                   fontweight='bold', color=colors[digit])
+        
+        # Use constrained_layout instead of tight_layout to avoid warnings
+        plt.subplots_adjust(hspace=0.4, wspace=0.5)
+        
+        save_path = self.config.images_dir / save_name
+        plt.savefig(save_path, dpi=self.config.dpi, bbox_inches='tight')
+        print(f"Saved MNIST dataset overview: {save_path}")
+        
+        plt.close()
+        return fig
+    
+    def animate_network_topology(self, model: MLPClassifier, X_sample: np.ndarray,
+                                 y_sample: int, save_name: str = "network_topology_animation.gif"):
+        """
+        Create animated visualization of network topology showing neuron activations
+        as data flows through the network for a specific prediction
+        """
+        # Get architecture info
+        arch = model.get_architecture_info()
+        input_size = arch['input_size']
+        hidden_layers = arch['hidden_layers']
+        output_size = arch['output_size']
+        
+        # Get activations for the sample
+        activations = []
+        activation_input = X_sample.reshape(1, -1)
+        activations.append(activation_input[0])
+        
+        # Forward pass to collect activations
+        for i, (weights, biases) in enumerate(zip(model.weights, model.biases)):
+            z = np.dot(activation_input, weights) + biases
+            # Use activation function directly (it's a callable, not an object)
+            if i == len(model.weights) - 1:  # Last layer uses softmax
+                from .mlp_model import ActivationFunction
+                activation_input = ActivationFunction.softmax(z)
+            else:
+                activation_input = model.activation_fn(z)
+            activations.append(activation_input[0])
+        
+        # Setup figure
+        fig, (ax_main, ax_img, ax_pred) = plt.subplots(1, 3, figsize=(18, 8),
+                                                        gridspec_kw={'width_ratios': [3, 1, 1]})
+        
+        # Show input image
+        ax_img.imshow(X_sample.reshape(28, 28), cmap='gray')
+        ax_img.set_title(f'Input Image\nTrue Label: {y_sample}', 
+                        fontsize=12, fontweight='bold')
+        ax_img.axis('off')
+        
+        # Setup prediction bar chart
+        predictions = model.predict_proba(X_sample.reshape(1, -1))[0]
+        predicted_class = np.argmax(predictions)
+        
+        colors_pred = ['green' if i == predicted_class else 'lightblue' 
+                      for i in range(10)]
+        bars = ax_pred.barh(range(10), predictions, color=colors_pred, edgecolor='black')
+        ax_pred.set_yticks(range(10))
+        ax_pred.set_yticklabels([f'Digit {i}' for i in range(10)])
+        ax_pred.set_xlabel('Probability', fontsize=10, fontweight='bold')
+        ax_pred.set_title(f'Prediction: {predicted_class}\n'
+                         f'Confidence: {predictions[predicted_class]:.2%}',
+                         fontsize=12, fontweight='bold')
+        ax_pred.set_xlim(0, 1)
+        ax_pred.grid(axis='x', alpha=0.3)
+        
+        # Calculate layer positions
+        layer_sizes = [input_size] + hidden_layers + [output_size]
+        max_neurons = max(layer_sizes)
+        n_layers = len(layer_sizes)
+        
+        # Reduce neuron display for large layers
+        max_display_neurons = 15
+        
+        def get_neuron_positions(layer_idx, n_neurons):
+            """Calculate positions for neurons in a layer"""
+            x = layer_idx / (n_layers - 1)
+            
+            # Limit displayed neurons
+            display_n = min(n_neurons, max_display_neurons)
+            
+            if n_neurons <= max_display_neurons:
+                y_positions = np.linspace(0.1, 0.9, n_neurons)
+                return x, y_positions, list(range(n_neurons)), False
+            else:
+                # Show subset with ellipsis indicator
+                show_indices = list(range(max_display_neurons // 2)) + \
+                              list(range(n_neurons - max_display_neurons // 2, n_neurons))
+                y_positions = np.linspace(0.1, 0.9, display_n)
+                return x, y_positions, show_indices, True
+        
+        # Store neuron positions
+        neuron_positions = []
+        neuron_indices = []
+        has_ellipsis = []
+        
+        for layer_idx, n_neurons in enumerate(layer_sizes):
+            x, y_pos, indices, ellipsis = get_neuron_positions(layer_idx, n_neurons)
+            neuron_positions.append((x, y_pos))
+            neuron_indices.append(indices)
+            has_ellipsis.append(ellipsis)
+        
+        # Animation function
+        def animate(frame):
+            ax_main.clear()
+            ax_main.set_xlim(-0.1, 1.1)
+            ax_main.set_ylim(0, 1)
+            ax_main.axis('off')
+            ax_main.set_title('Neural Network Topology & Activation Flow',
+                            fontsize=14, fontweight='bold')
+            
+            # Determine which layer to highlight
+            current_layer = min(frame // 10, len(layer_sizes) - 1)
+            
+            # Draw connections (with transparency based on progress)
+            for layer_idx in range(len(layer_sizes) - 1):
+                x1, y1_positions = neuron_positions[layer_idx]
+                x2, y2_positions = neuron_positions[layer_idx + 1]
+                indices1 = neuron_indices[layer_idx]
+                indices2 = neuron_indices[layer_idx + 1]
+                
+                # Connection opacity
+                if layer_idx < current_layer:
+                    alpha = 0.3
+                elif layer_idx == current_layer:
+                    alpha = 0.6
+                else:
+                    alpha = 0.05
+                
+                # Draw sample connections (not all to avoid clutter)
+                step1 = max(1, len(y1_positions) // 5)
+                step2 = max(1, len(y2_positions) // 5)
+                
+                for i in range(0, len(y1_positions), step1):
+                    for j in range(0, len(y2_positions), step2):
+                        ax_main.plot([x1, x2], [y1_positions[i], y2_positions[j]],
+                                   'gray', alpha=alpha, linewidth=0.3)
+            
+            # Draw neurons
+            for layer_idx, (x, y_positions) in enumerate(neuron_positions):
+                indices = neuron_indices[layer_idx]
+                
+                for i, y in enumerate(y_positions):
+                    # Skip middle for ellipsis
+                    if has_ellipsis[layer_idx] and i == len(y_positions) // 2:
+                        ax_main.text(x, y, '...', fontsize=16, ha='center', va='center',
+                                   fontweight='bold')
+                        continue
+                    
+                    # Get actual neuron index with bounds checking
+                    if i >= len(indices):
+                        continue  # Skip if index out of range
+                    actual_idx = indices[i]
+                    
+                    # Get activation value with bounds checking
+                    if layer_idx >= len(activations) or actual_idx >= len(activations[layer_idx]):
+                        activation_value = 0.0  # Default for out of bounds
+                    else:
+                        activation_value = activations[layer_idx][actual_idx]
+                    
+                    # Normalize activation value to [0, 1] range
+                    activation_value = np.clip(activation_value, 0, 1)
+                    
+                    # Determine color based on activation and progress
+                    if layer_idx < current_layer:
+                        # Already processed
+                        color = plt.cm.RdYlGn(activation_value)
+                        size = 200 + 300 * activation_value
+                        alpha_neuron = 0.8
+                    elif layer_idx == current_layer:
+                        # Currently processing
+                        progress = (frame % 10) / 10
+                        color = plt.cm.RdYlGn(activation_value * progress)
+                        size = 200 + 300 * activation_value * progress
+                        alpha_neuron = 0.9
+                    else:
+                        # Not yet processed
+                        color = 'lightgray'
+                        size = 150
+                        alpha_neuron = 0.3
+                    
+                    # Draw neuron (fixed: use facecolor instead of color to avoid warning)
+                    circle = plt.Circle((x, y), 0.02, facecolor=color, alpha=alpha_neuron,
+                                       edgecolor='black', linewidth=1.5, zorder=10)
+                    ax_main.add_patch(circle)
+                    
+                    # Add activation value text for active neurons
+                    if layer_idx <= current_layer and activation_value > 0.1:
+                        ax_main.text(x, y, f'{activation_value:.2f}',
+                                   fontsize=6, ha='center', va='center',
+                                   fontweight='bold', zorder=11)
+                
+                # Layer labels
+                if layer_idx == 0:
+                    label = f'Input\n({layer_sizes[layer_idx]})'
+                elif layer_idx == len(layer_sizes) - 1:
+                    label = f'Output\n({layer_sizes[layer_idx]})'
+                else:
+                    label = f'Hidden {layer_idx}\n({layer_sizes[layer_idx]})'
+                
+                ax_main.text(x, -0.05, label, fontsize=10, ha='center',
+                           fontweight='bold')
+            
+            # Progress indicator
+            progress_pct = (frame / (len(layer_sizes) * 10)) * 100
+            ax_main.text(0.5, 1.05, f'Forward Propagation Progress: {progress_pct:.0f}%',
+                       fontsize=12, ha='center', fontweight='bold',
+                       transform=ax_main.transAxes)
+            
+            return ax_main,
+        
+        # Create animation
+        n_frames = len(layer_sizes) * 10
+        anim = FuncAnimation(fig, animate, frames=n_frames, interval=100, blit=False)
+        
+        # Save animation
+        save_path = self.config.images_dir / save_name
+        writer = PillowWriter(fps=10)
+        anim.save(save_path, writer=writer)
+        print(f"Saved network topology animation: {save_path}")
+        
+        plt.close()
+        return fig
+

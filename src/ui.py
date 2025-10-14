@@ -387,10 +387,12 @@ class InteractiveUI:
         
         options = [
             ("dataset", "📊 Dataset Samples"),
+            ("mnist_overview", "🖼️  MNIST Dataset Overview (NEW!)"),
             ("training", "📈 Training History"),
             ("confusion", "🔲 Confusion Matrix"),
             ("predictions", "🎯 Prediction Samples"),
             ("probabilities", "🌡️  Probability Heatmap"),
+            ("topology", "🧠 Network Topology Animation (NEW!)"),
             ("weights", "⚖️  Weight Distributions"),
             ("decision", "🗺️  Decision Boundary"),
             ("loss_landscape", "🏔️  Loss Landscape"),
@@ -400,7 +402,7 @@ class InteractiveUI:
         ]
         
         table = Table(box=box.ROUNDED, show_header=False)
-        table.add_column("Key", style="cyan", width=15)
+        table.add_column("Key", style="cyan", width=20)
         table.add_column("Visualization", style="yellow")
         
         for key, name in options:

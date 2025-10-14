@@ -340,6 +340,25 @@ class MLPExperimentApp:
                         save_name="dataset_samples.png"
                     )
                 
+                elif viz_type == "mnist_overview":
+                    # NEW: MNIST Dataset Overview
+                    visualizer.plot_mnist_dataset_overview(
+                        self.X_train, self.y_train,
+                        save_name="mnist_dataset_overview.png"
+                    )
+                
+                elif viz_type == "topology":
+                    # NEW: Network Topology Animation
+                    # Select a random sample for visualization
+                    idx = np.random.choice(len(self.X_test))
+                    sample_X = self.X_test[idx]
+                    sample_y = self.y_test[idx]
+                    
+                    visualizer.animate_network_topology(
+                        model, sample_X, sample_y,
+                        save_name="network_topology_animation.gif"
+                    )
+                
                 elif viz_type == "training":
                     visualizer.plot_training_history(
                         model.history,

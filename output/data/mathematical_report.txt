@@ -1,0 +1,133 @@
+================================================================================
+MATHEMATICAL ANALYSIS REPORT
+================================================================================
+Generated: 2025-10-13 22:44:15
+
+1. NETWORK ARCHITECTURE
+--------------------------------------------------------------------------------
+   Input Layer:        784 neurons
+   Hidden Layer 1:    128 neurons
+   Hidden Layer 2:    64 neurons
+   Output Layer:       10 neurons
+   Activation Function: sigmoid
+   Total Parameters:   109,386
+
+2. WEIGHT STATISTICS
+--------------------------------------------------------------------------------
+   Layer 1:
+      Weights Shape:      (784, 128)
+      Weights Mean:       0.000013
+      Weights Std:        0.050877
+      Weights Min:        -0.225205
+      Weights Max:        0.227852
+      Biases Shape:       (1, 128)
+      Biases Mean:        -0.000612
+      Biases Std:         0.002903
+
+   Layer 2:
+      Weights Shape:      (128, 64)
+      Weights Mean:       0.001074
+      Weights Std:        0.126279
+      Weights Min:        -0.422571
+      Weights Max:        0.535358
+      Biases Shape:       (1, 64)
+      Biases Mean:        -0.000621
+      Biases Std:         0.006665
+
+   Layer 3:
+      Weights Shape:      (64, 10)
+      Weights Mean:       0.007117
+      Weights Std:        0.188608
+      Weights Min:        -0.661309
+      Weights Max:        0.650422
+      Biases Shape:       (1, 10)
+      Biases Mean:        -0.000000
+      Biases Std:         0.015393
+
+3. TRAINING DYNAMICS
+--------------------------------------------------------------------------------
+   Total Epochs:           50
+   Initial Training Loss:  2.315936
+   Final Training Loss:    1.990384
+   Loss Reduction:         0.325552
+   Loss Reduction Rate:    14.06%
+
+   Initial Training Acc:   0.094000
+   Final Training Acc:     0.650000
+   Accuracy Improvement:   0.556000
+
+   Final Validation Loss:  2.003348
+   Final Validation Acc:   0.668000
+
+   Total Training Time:    1.80 seconds
+   Average Epoch Time:     0.0360 seconds
+   Training Throughput:    111145.67 samples/sec
+
+4. PERFORMANCE METRICS
+--------------------------------------------------------------------------------
+   Training Accuracy:      0.647000 (64.70%)
+   Test Accuracy:          0.653000 (65.30%)
+   Generalization Gap:     -0.006000
+   Status:                 ⚠️  UNDERFITTING DETECTED
+
+5. DETAILED CLASSIFICATION METRICS (TEST SET)
+--------------------------------------------------------------------------------
+              precision    recall  f1-score   support
+
+     Class 0       0.84      0.91      0.87        98
+     Class 1       0.54      0.97      0.69       110
+     Class 2       0.86      0.68      0.76        97
+     Class 3       0.53      0.86      0.66       111
+     Class 4       0.86      0.48      0.62        87
+     Class 5       1.00      0.16      0.27        95
+     Class 6       0.85      0.83      0.84        98
+     Class 7       0.75      0.80      0.77       103
+     Class 8       1.00      0.03      0.06        98
+     Class 9       0.43      0.71      0.54       103
+
+    accuracy                           0.65      1000
+   macro avg       0.77      0.64      0.61      1000
+weighted avg       0.76      0.65      0.61      1000
+
+
+6. CONFUSION MATRIX ANALYSIS
+--------------------------------------------------------------------------------
+   Most Common Misclassifications:
+      1. True: 8 → Predicted: 1 (38 times)
+      2. True: 4 → Predicted: 9 (35 times)
+      3. True: 5 → Predicted: 3 (35 times)
+      4. True: 8 → Predicted: 3 (26 times)
+      5. True: 8 → Predicted: 9 (23 times)
+
+   Per-Class Accuracy:
+      Class 0: 0.9082 (90.82%)
+      Class 1: 0.9727 (97.27%)
+      Class 2: 0.6804 (68.04%)
+      Class 3: 0.8559 (85.59%)
+      Class 4: 0.4828 (48.28%)
+      Class 5: 0.1579 (15.79%)
+      Class 6: 0.8265 (82.65%)
+      Class 7: 0.7961 (79.61%)
+      Class 8: 0.0306 (3.06%)
+      Class 9: 0.7087 (70.87%)
+
+7. STATISTICAL ANALYSIS
+--------------------------------------------------------------------------------
+   Average Confidence:     0.143810
+   Confidence Std:         0.019282
+   Min Confidence:         0.108208
+   Max Confidence:         0.216456
+
+   Avg Confidence (Correct):   0.150817
+   Avg Confidence (Incorrect): 0.130625
+   Confidence Difference:      0.020192
+
+8. CONVERGENCE ANALYSIS
+--------------------------------------------------------------------------------
+   Final Loss Gradient:        -0.010050
+   Avg Loss Gradient (last 10): -0.009078
+   Convergence Status:         ⚠️  NOT FULLY CONVERGED
+
+================================================================================
+END OF REPORT
+================================================================================

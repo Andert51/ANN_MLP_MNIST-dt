@@ -17,14 +17,6 @@ ENV/
 *.swo
 *~
 
-# Output files
-output/images/*.png
-output/images/*.gif
-output/images/*.html
-output/data/*.pkl
-output/data/*.json
-output/data/*.txt
-
 # Keep directory structure
 !output/images/.gitkeep
 !output/data/.gitkeep

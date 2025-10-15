@@ -1,0 +1,632 @@
+[
+  {
+    "experiment_name": "Config 13",
+    "config": {
+      "hidden_layers": [
+        512,
+        64,
+        512,
+        64,
+        32
+      ],
+      "learning_rate": 0.5,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.932,
+    "final_loss": 0.0005182107157366726,
+    "training_time": 34.73436665534973,
+    "n_epochs": 72,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        512,
+        64,
+        512,
+        64,
+        32
+      ],
+      "output_size": 10,
+      "total_layers": 6,
+      "total_parameters": 503274,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 2",
+    "config": {
+      "hidden_layers": [
+        128,
+        512,
+        256
+      ],
+      "learning_rate": 0.1,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.9186666666666666,
+    "final_loss": 0.0010132955941420834,
+    "training_time": 51.7628653049469,
+    "n_epochs": 131,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        128,
+        512,
+        256
+      ],
+      "output_size": 10,
+      "total_layers": 4,
+      "total_parameters": 300426,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 9",
+    "config": {
+      "hidden_layers": [
+        256,
+        256,
+        256,
+        512
+      ],
+      "learning_rate": 0.1,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.9186666666666666,
+    "final_loss": 0.0007707203212328523,
+    "training_time": 58.903626441955566,
+    "n_epochs": 101,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        256,
+        256,
+        256,
+        512
+      ],
+      "output_size": 10,
+      "total_layers": 5,
+      "total_parameters": 469258,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 5",
+    "config": {
+      "hidden_layers": [
+        128,
+        64,
+        256
+      ],
+      "learning_rate": 0.5,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.916,
+    "final_loss": 0.0007109421914885341,
+    "training_time": 14.514660596847534,
+    "n_epochs": 102,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        128,
+        64,
+        256
+      ],
+      "output_size": 10,
+      "total_layers": 4,
+      "total_parameters": 127946,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 15",
+    "config": {
+      "hidden_layers": [
+        32
+      ],
+      "learning_rate": 0.5,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.912,
+    "final_loss": 0.0014577097014407301,
+    "training_time": 5.104609966278076,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        32
+      ],
+      "output_size": 10,
+      "total_layers": 2,
+      "total_parameters": 25450,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 7",
+    "config": {
+      "hidden_layers": [
+        512,
+        32,
+        64
+      ],
+      "learning_rate": 0.5,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.9106666666666666,
+    "final_loss": 0.0034747153528073746,
+    "training_time": 49.55608820915222,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        512,
+        32,
+        64
+      ],
+      "output_size": 10,
+      "total_layers": 4,
+      "total_parameters": 421098,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 20",
+    "config": {
+      "hidden_layers": [
+        32,
+        512,
+        64
+      ],
+      "learning_rate": 1.0,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.9053333333333333,
+    "final_loss": 0.00096561642960894,
+    "training_time": 22.5318706035614,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        32,
+        512,
+        64
+      ],
+      "output_size": 10,
+      "total_layers": 4,
+      "total_parameters": 75498,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 11",
+    "config": {
+      "hidden_layers": [
+        64,
+        64,
+        256,
+        512
+      ],
+      "learning_rate": 0.01,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 1.0,
+    "test_accuracy": 0.9026666666666666,
+    "final_loss": 0.011973967268788192,
+    "training_time": 47.21540021896362,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        64,
+        64,
+        256,
+        512
+      ],
+      "output_size": 10,
+      "total_layers": 5,
+      "total_parameters": 207754,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 16",
+    "config": {
+      "hidden_layers": [
+        128,
+        32,
+        128
+      ],
+      "learning_rate": 0.1,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.988,
+    "test_accuracy": 0.8986666666666666,
+    "final_loss": 0.08135922642316912,
+    "training_time": 15.036399126052856,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        128,
+        32,
+        128
+      ],
+      "output_size": 10,
+      "total_layers": 4,
+      "total_parameters": 110122,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 3",
+    "config": {
+      "hidden_layers": [
+        64,
+        256,
+        64,
+        256,
+        512
+      ],
+      "learning_rate": 0.001,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.9493333333333334,
+    "test_accuracy": 0.896,
+    "final_loss": 0.20237517394203336,
+    "training_time": 57.34361267089844,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        64,
+        256,
+        64,
+        256,
+        512
+      ],
+      "output_size": 10,
+      "total_layers": 6,
+      "total_parameters": 236682,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 12",
+    "config": {
+      "hidden_layers": [
+        64,
+        64,
+        256,
+        256
+      ],
+      "learning_rate": 0.001,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.9266666666666666,
+    "test_accuracy": 0.896,
+    "final_loss": 0.2733959864163188,
+    "training_time": 25.90383267402649,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        64,
+        64,
+        256,
+        256
+      ],
+      "output_size": 10,
+      "total_layers": 5,
+      "total_parameters": 139402,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 10",
+    "config": {
+      "hidden_layers": [
+        256
+      ],
+      "learning_rate": 0.01,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.959,
+    "test_accuracy": 0.8933333333333333,
+    "final_loss": 0.17506638112521872,
+    "training_time": 26.43800663948059,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        256
+      ],
+      "output_size": 10,
+      "total_layers": 2,
+      "total_parameters": 203530,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 17",
+    "config": {
+      "hidden_layers": [
+        512,
+        64,
+        64
+      ],
+      "learning_rate": 0.001,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.9136666666666666,
+    "test_accuracy": 0.8933333333333333,
+    "final_loss": 0.3506943070993943,
+    "training_time": 51.532440185546875,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        512,
+        64,
+        64
+      ],
+      "output_size": 10,
+      "total_layers": 4,
+      "total_parameters": 439562,
+      "activation": "tanh"
+    }
+  },
+  {
+    "experiment_name": "Config 6",
+    "config": {
+      "hidden_layers": [
+        256,
+        256,
+        32
+      ],
+      "learning_rate": 0.1,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.973,
+    "test_accuracy": 0.892,
+    "final_loss": 0.12279295703697284,
+    "training_time": 45.39984941482544,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        256,
+        256,
+        32
+      ],
+      "output_size": 10,
+      "total_layers": 4,
+      "total_parameters": 275306,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 18",
+    "config": {
+      "hidden_layers": [
+        256
+      ],
+      "learning_rate": 0.01,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.9,
+    "test_accuracy": 0.8786666666666667,
+    "final_loss": 0.3821871223024523,
+    "training_time": 26.022565126419067,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        256
+      ],
+      "output_size": 10,
+      "total_layers": 2,
+      "total_parameters": 203530,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 19",
+    "config": {
+      "hidden_layers": [
+        128,
+        256,
+        128,
+        128,
+        32
+      ],
+      "learning_rate": 0.1,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.8876666666666667,
+    "test_accuracy": 0.824,
+    "final_loss": 0.4047846993046011,
+    "training_time": 27.734285831451416,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        128,
+        256,
+        128,
+        128,
+        32
+      ],
+      "output_size": 10,
+      "total_layers": 6,
+      "total_parameters": 187370,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 4",
+    "config": {
+      "hidden_layers": [
+        512,
+        256
+      ],
+      "learning_rate": 0.001,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.5616666666666666,
+    "test_accuracy": 0.5666666666666667,
+    "final_loss": 2.118168088542818,
+    "training_time": 68.8235251903534,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        512,
+        256
+      ],
+      "output_size": 10,
+      "total_layers": 3,
+      "total_parameters": 535818,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 1",
+    "config": {
+      "hidden_layers": [
+        512,
+        128,
+        512,
+        512
+      ],
+      "learning_rate": 0.01,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.222,
+    "test_accuracy": 0.22133333333333333,
+    "final_loss": 2.1837563554083155,
+    "training_time": 115.75296711921692,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        512,
+        128,
+        512,
+        512
+      ],
+      "output_size": 10,
+      "total_layers": 5,
+      "total_parameters": 801418,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 14",
+    "config": {
+      "hidden_layers": [
+        512,
+        32,
+        512,
+        512
+      ],
+      "learning_rate": 0.001,
+      "activation": "sigmoid",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.11466666666666667,
+    "test_accuracy": 0.12133333333333333,
+    "final_loss": 2.2962782685984324,
+    "training_time": 95.92456650733948,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        512,
+        32,
+        512,
+        512
+      ],
+      "output_size": 10,
+      "total_layers": 5,
+      "total_parameters": 703018,
+      "activation": "sigmoid"
+    }
+  },
+  {
+    "experiment_name": "Config 8",
+    "config": {
+      "hidden_layers": [
+        64,
+        64,
+        32,
+        64
+      ],
+      "learning_rate": 0.75,
+      "activation": "tanh",
+      "max_epochs": 150,
+      "batch_size": 64
+    },
+    "train_accuracy": 0.11133333333333334,
+    "test_accuracy": 0.11466666666666667,
+    "final_loss": 11.22069965384644,
+    "training_time": 11.127054691314697,
+    "n_epochs": 150,
+    "architecture_info": {
+      "input_size": 784,
+      "hidden_layers": [
+        64,
+        64,
+        32,
+        64
+      ],
+      "output_size": 10,
+      "total_layers": 5,
+      "total_parameters": 59242,
+      "activation": "tanh"
+    }
+  }
+]

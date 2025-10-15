@@ -66,7 +66,7 @@ class InteractiveUI:
             ("4", "⚡ Activation Function Comparison", "Compare activation functions"),
             ("5", "🎯 Comprehensive Grid Search", "Exhaustive hyperparameter search"),
             ("6", "🔊 Noise Robustness Testing", "Test model with noisy data"),
-            ("7", "⚙️  Configure Experiment Settings", "Customize experiment parameters"),
+            ("7", "🔨 Configure Experiment Settings", "Customize experiment parameters"),
             ("8", "📁 Load & Analyze Previous Results", "View saved experiment results"),
             ("9", "❌ Exit", "Exit the application")
         ]
@@ -386,19 +386,19 @@ class InteractiveUI:
         self.console.print("\n[bold cyan]═══ Visualization Options ═══[/bold cyan]\n")
         
         options = [
-            ("dataset", "📊 Dataset Samples"),
-            ("mnist_overview", "🖼️  MNIST Dataset Overview (NEW!)"),
-            ("training", "📈 Training History"),
-            ("confusion", "🔲 Confusion Matrix"),
-            ("predictions", "🎯 Prediction Samples"),
-            ("probabilities", "🌡️  Probability Heatmap"),
-            ("topology", "🧠 Network Topology Animation (NEW!)"),
-            ("weights", "⚖️  Weight Distributions"),
-            ("decision", "🗺️  Decision Boundary"),
-            ("loss_landscape", "🏔️  Loss Landscape"),
-            ("animation", "🎬 Training Animation"),
-            ("dashboard", "📊 Interactive Dashboard"),
-            ("all", "🌟 Generate All Visualizations")
+            ("dataset", "Dataset Samples"),
+            ("mnist_overview", "MNIST Dataset Overview"),
+            ("training", "Training History"),
+            ("confusion", "Confusion Matrix"),
+            ("predictions", "Prediction Samples"),
+            ("probabilities", "Probability Heatmap"),
+            ("topology", "Network Topology Animation"),
+            ("weights", "Weight Distributions"),
+            ("decision", "Decision Boundary"),
+            ("loss_landscape", "Loss Landscape"),
+            ("animation", "Training Animation"),
+            ("dashboard", "Interactive Dashboard"),
+            ("all", "Generate All Visualizations")
         ]
         
         table = Table(box=box.ROUNDED, show_header=False)

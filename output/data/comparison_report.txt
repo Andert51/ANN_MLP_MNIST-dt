@@ -1,0 +1,76 @@
+================================================================================
+CONFIGURATION COMPARISON REPORT
+================================================================================
+Generated: 2025-10-14 18:48:26
+Total Configurations: 20
+
+SUMMARY STATISTICS
+--------------------------------------------------------------------------------
+Test Accuracy:
+   Best:    0.932000
+   Worst:   0.114667
+   Mean:    0.770600
+   Std:     0.270977
+   Median:  0.896000
+
+Final Loss:
+   Best:    0.000518
+   Worst:   11.220700
+   Mean:    0.991622
+   Std:     2.463405
+
+Training Time:
+   Fastest: 5.10s
+   Slowest: 115.75s
+   Mean:    42.57s
+   Std:     27.43s
+
+TOP 5 CONFIGURATIONS
+--------------------------------------------------------------------------------
+
+1. Config 13
+   Layers:          [512, 64, 512, 64, 32]
+   Learning Rate:   0.5
+   Activation:      tanh
+   Test Accuracy:   0.932000
+   Final Loss:      0.000518
+   Training Time:   34.73s
+   Epochs:          72
+
+2. Config 2
+   Layers:          [128, 512, 256]
+   Learning Rate:   0.1
+   Activation:      tanh
+   Test Accuracy:   0.918667
+   Final Loss:      0.001013
+   Training Time:   51.76s
+   Epochs:          131
+
+3. Config 9
+   Layers:          [256, 256, 256, 512]
+   Learning Rate:   0.1
+   Activation:      tanh
+   Test Accuracy:   0.918667
+   Final Loss:      0.000771
+   Training Time:   58.90s
+   Epochs:          101
+
+4. Config 5
+   Layers:          [128, 64, 256]
+   Learning Rate:   0.5
+   Activation:      tanh
+   Test Accuracy:   0.916000
+   Final Loss:      0.000711
+   Training Time:   14.51s
+   Epochs:          102
+
+5. Config 15
+   Layers:          [32]
+   Learning Rate:   0.5
+   Activation:      tanh
+   Test Accuracy:   0.912000
+   Final Loss:      0.001458
+   Training Time:   5.10s
+   Epochs:          150
+
+================================================================================
